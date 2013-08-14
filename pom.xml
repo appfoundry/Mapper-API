@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>be.idamediafoundry.sofa</groupId>
+  <artifactId>mapper-api</artifactId>
+  <packaging>jar</packaging>
+  <name>Mapper API</name>
+  <version>1.1</version>
+
+  <description>
+		Simple mapper API to map objects from one to another
+	</description>
+
+  <!--<scm> <connection>scm:svn:https://xploregroup.cronos.be/svn/...</connection> <developerConnection>scm:svn:https://xploregroup.cronos.be/svn/...</developerConnection> <url>https://xploregroup.cronos.be/svn/...</url> 
+    </scm> -->
+
+  <ciManagement>
+    <system>Hudson</system>
+    <url>http://ws08-idadev:8080/hudson</url>
+  </ciManagement>
+
+  <!-- <issueManagement> <system>???</system> <url>???</url> </issueManagement> -->
+
+
+  <distributionManagement>
+    <repository>
+      <id>ida-releases</id>
+      <url>http://ws08-idadev:8080/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>ida-snapshots</id>
+      <url>http://ws08-idadev:8080/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+
+    <!-- <site> <id>site</id> <url>???</url> </site> -->
+  </distributionManagement>
+
+  <properties>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.8.5</version>
+    </dependency>
+  </dependencies>
+  <build>
+
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+          <wtpversion>2.0</wtpversion>
+          <wtpmanifest>true</wtpmanifest>
+          <wtpapplicationxml>true</wtpapplicationxml>
+          <downloadSources>true</downloadSources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+  <organization>
+    <name>iDA-MediaFoundry</name>
+    <url>http://www.ida-mediafoundry.be/</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>seghemi</id>
+      <name>Mike</name>
+      <email>michael.seghers@ida-mediafoundry.be</email>
+      <organization>iDA-MediaFoundry</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+</project>

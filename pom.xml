@@ -4,7 +4,7 @@
     <groupId>be.idamediafoundry.sofa</groupId>
     <artifactId>mapper-api</artifactId>
     <packaging>jar</packaging>
-    <version>2.0</version>
+    <version>2.1-SNAPSHOT</version>
 
     <properties>
         <slf4j-api.version>1.6.1</slf4j-api.version>
@@ -33,7 +33,7 @@
         <connection>scm:git:git@github.com:idamediafoundry/Mapper-API.git</connection>
         <developerConnection>scm:git:git@github.com:idamediafoundry/Mapper-API.git</developerConnection>
         <url>scm:git:git@github.com:idamediafoundry/Mapper-API.git</url>
-      <tag>mapper-api-2.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <issueManagement>

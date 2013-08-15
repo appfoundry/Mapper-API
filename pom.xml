@@ -31,7 +31,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/idamediafoundry/Mapper-API</connection>
-        <developerConnection>scm:git:git://github.com/idamediafoundry/Mapper-API</developerConnection>
+        <developerConnection>scm:git:ssh://github.com/idamediafoundry/Mapper-API</developerConnection>
         <url>scm:git:git://github.com/idamediafoundry/Mapper-API</url>
       <tag>mapper-api-2.0</tag>
   </scm>

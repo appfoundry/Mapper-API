@@ -1,45 +1,29 @@
 package be.idamf.sofa.mapper;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
- * Mapper interface defining operations to map an entity to value object and vice versa.
- * 
- * @param <V> The value object type
- * @param <E> The entity type
+ * A Mapper is capable of mapping an object of type A to an object of type B.
+ *
+ * @param <A> object type A
+ * @param <B> object type B
  */
-public interface Mapper<V, E> {
+public interface Mapper<A, B> {
     /**
-     * Map a value object to an entity.
-     * 
-     * @param vo the value object.
-     * @return The entity object
+     * Map an object of type A to an object of type B.
+     *
+     * @param a the object of type A
+     * @return an object of type B
      */
-    E mapToEntity(V vo);
+    B mapAToB(A a);
 
     /**
-     * Map an entity to a value object.
-     * 
-     * @param e the entity to be mapped to a value object
-     * @return the value object
+     * Map a collection of objects of type A to a collection of objects of type B.
+     *
+     * @param collectionOfA             the collection of objects of type A
+     * @param emptyMutableCollectionOfB an instance of the collection of objects of type B, which will be filled up
+     * @param <C>                       The type of the resulting collection
+     * @return a collection of objects of type B
      */
-    V mapToValueObject(E e);
-
-    /**
-     * Maps a list of value objects to a list of entities.
-     * 
-     * @param valueObjects the value object list to be mapped
-     * @return a list of mapped entities. If the valueObjects list is empty, the returned list will also be empty. Null
-     *         is returned when valueObjects is null.
-     */
-    List<E> mapToEntities(final List<V> valueObjects);
-
-    /**
-     * Map all entities to value objects.
-     * 
-     * @param entities the entities to be mapped to value objects
-     * @return the list of value object. If the entities list is empty, the returned list will also be empty. Null
-     *         is returned when entities is null.
-     */
-    List<V> mapToValueObjects(List<E> entities);
+    <C extends Collection<B>> C mapCollectionOfAToCollectionOfB(Collection<A> collectionOfA, C emptyMutableCollectionOfB);
 }

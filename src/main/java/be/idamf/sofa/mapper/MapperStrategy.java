@@ -1,18 +1,19 @@
 package be.idamf.sofa.mapper;
 
 /**
- * Mapper strategy. A strategy is defined to decide what parts of an entity get mapped to the value
- * object (to avoid unnecessary data loading).
- * 
- * @param <V> The value object type
- * @param <E> The entity type
+ * Mapper strategy. A strategy is defined to decide what parts of an object of type B gets mapped to an object of type
+ * A.
+ * This is useful in situations where the mapping of an object depends on the context in which it is mapped.
+ *
+ * @param <A> the source object type
+ * @param <B> the destination object type
  */
-public interface MapperStrategy<V, E> {
+public interface MapperStrategy<A, B> {
     /**
-     * Map the entity to a value object, with a certain strategy in mind.
-     * 
-     * @param e the entity
-     * @return the mapped value object
+     * Map an object of type B to an object of type A.
+     *
+     * @param b the object of type B
+     * @return an object of type A
      */
-    V mapToValueObject(E e);
+    A mapBToA(B b);
 }

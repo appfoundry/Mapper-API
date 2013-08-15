@@ -1,42 +1,33 @@
 package be.idamf.sofa.mapper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
- * Abstract mapper class, implementing the {@link Mapper#mapToValueObjects(List)} and {@link Mapper#mapToEntities(List)}
- * methods by just iterating the list and calling the {@link Mapper#mapToValueObject(Object)} or
- * {@link Mapper#mapToEntity(Object)} respectively.
- * 
- * @param <V> The value object type
- * @param <E> The entity type
+ * Abstract mapper class, implementing the {@link Mapper#mapCollectionOfAToCollectionOfB(java.util.Collection,
+ * java.util.Collection)}
+ * method by just iterating the list and calling the {@link Mapper#mapAToB(Object)}.
+ *
+ * @param <A> object type A
+ * @param <B> object type B
  */
-public abstract class AbstractMapper<V, E> implements Mapper<V, E> {
-    /**
-     * {@inheritDoc}
-     */
-    public final List<V> mapToValueObjects(final List<E> entities) {
-        List<V> valueObjects = null;
-        if (entities != null) {
-            valueObjects = new ArrayList<V>(entities.size());
-            for (E e : entities) {
-                valueObjects.add(mapToValueObject(e));
-            }
-        }
-        return valueObjects;
-    }
+public abstract class AbstractMapper<A, B> implements Mapper<A, B> {
 
     /**
      * {@inheritDoc}
      */
-    public final List<E> mapToEntities(final List<V> valueObjects) {
-        List<E> entities = null;
-        if (valueObjects != null) {
-            entities = new ArrayList<E>(valueObjects.size());
-            for (V vo : valueObjects) {
-                entities.add(mapToEntity(vo));
-            }
+    @Override
+    public <C extends Collection<B>> C mapCollectionOfAToCollectionOfB(final Collection<A> collectionOfA, final C emptyMutableCollectionOfB) {
+        C result = null;
+        if (collectionOfA != null) {
+            result = fillCollectionOfB(collectionOfA, emptyMutableCollectionOfB);
         }
-        return entities;
+        return result;
+    }
+
+    private <C extends Collection<B>> C fillCollectionOfB(final Collection<A> collectionOfA, final C emptyMutableCollectionOfB) {
+        for (A a : collectionOfA) {
+            emptyMutableCollectionOfB.add(this.mapAToB(a));
+        }
+        return emptyMutableCollectionOfB;
     }
 }

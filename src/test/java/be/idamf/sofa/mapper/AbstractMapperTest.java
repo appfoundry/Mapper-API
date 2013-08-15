@@ -1,72 +1,49 @@
 package be.idamf.sofa.mapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-import be.idamf.sofa.mapper.AbstractMapper;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-@RunWith(JUnit4.class)
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
+
 public class AbstractMapperTest {
-    //SUT
-    protected AbstractMapper<String, String> mapper;
+    private AbstractMapper<String, String> mapper;
 
     @Before
     public void setup() {
         mapper = new AbstractMapper<String, String>() {
-
-            public String mapToEntity(String vo) {
-                return "e";
+            public String mapAToB(String a) {
+                return a + "_to_b";
             }
-
-            public String mapToValueObject(String e) {
-                return "vo";
-            }
-
         };
     }
 
     @Test
-    public final void testMapToEntities() {
-        List<String> valueObjects = new ArrayList<String>();
-        valueObjects.add("valueObject");
-
-        List<String> expected = new ArrayList<String>();
-        expected.add("e");
-
-        List<String> actual = mapper.mapToEntities(valueObjects);
-
-        Assert.assertEquals(expected, actual);
+    public void test_mapListOfAtoListOfB() throws Exception {
+        List<String> result = mapper.mapCollectionOfAToCollectionOfB(Arrays.asList("one", "two", "three"),
+                                                                     new ArrayList<String>());
+        assertThat(result.size(), is(3));
+        assertThat(result, hasItems("one_to_b", "two_to_b", "three_to_b"));
     }
 
     @Test
-    public final void testMapToEntitiesNull() {
-        List<String> actual = mapper.mapToEntities(null);
-        Assert.assertNull(actual);
+    public void test_mapListOfAtoListOfB_nullList() throws Exception {
+        List<String> result = mapper.mapCollectionOfAToCollectionOfB(null, new ArrayList<String>());
+        assertThat(result, is(nullValue()));
     }
 
     @Test
-    public final void testMapToValueObjects() {
-        List<String> entities = new ArrayList<String>();
-        entities.add("entity");
-
-        List<String> expected = new ArrayList<String>();
-        expected.add("vo");
-
-        List<String> actual = mapper.mapToValueObjects(entities);
-
-        Assert.assertEquals(expected, actual);
+    public void test_mapListOfAtoListOfB_emptyList() throws Exception {
+        List<String> result = mapper.mapCollectionOfAToCollectionOfB(Collections.<String>emptyList(), new ArrayList<String>());
+        assertThat(result.isEmpty(), is(true));
     }
-
-    @Test
-    public final void testMapToValueObjectsNull() {
-        List<String> actual = mapper.mapToValueObjects(null);
-        Assert.assertNull(actual);
-    }
-
 }

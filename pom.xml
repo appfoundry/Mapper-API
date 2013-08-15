@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.idamediafoundry.sofa</groupId>
     <artifactId>mapper-api</artifactId>
     <packaging>jar</packaging>
-    <version>2.0-SNAPSHOT</version>
+    <version>2.0</version>
 
     <properties>
         <slf4j-api.version>1.6.1</slf4j-api.version>
@@ -34,7 +33,8 @@
         <connection>scm:git:git@github.com:idamediafoundry/Mapper-API.git</connection>
         <developerConnection>scm:git:git@github.com:idamediafoundry/Mapper-API.git</developerConnection>
         <url>scm:git:git@github.com:idamediafoundry/Mapper-API.git</url>
-    </scm>
+      <tag>mapper-api-2.0</tag>
+  </scm>
 
     <issueManagement>
         <system>GitHub</system>
